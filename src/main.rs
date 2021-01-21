@@ -20,7 +20,7 @@ fn main() -> std::io::Result<()> {
     };
 
     let chars: Vec<char> = buffer.iter().map(|b| *b as char).collect();
-    let tokens = tokenizer(&chars);
+    let tokens = tokenizer(&chars).unwrap();
     println!("tokens:");
     for token in tokens.iter() {
         println!("{:?}", token);
