@@ -78,7 +78,7 @@ fn try_parse_literal_token(literal: &str, current: usize, chars: &Vec<char>) -> 
     })
 }
 
-pub fn tokenizer(chars: &Vec<char>) -> Result<Vec<Token>, String> {
+pub fn tokenize(chars: &Vec<char>) -> Result<Vec<Token>, String> {
     let mut tokens = vec![];
     let mut current = 0;
 

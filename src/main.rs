@@ -3,8 +3,9 @@ use std::io::BufReader;
 use std::str;
 use std::{fs::File, vec};
 
-mod tokenizer;
-use tokenizer::{tokenizer};
+mod parser;
+use parser::{tokenize, TokenParser};
+
 
 
 fn main() -> std::io::Result<()> {
@@ -20,11 +21,22 @@ fn main() -> std::io::Result<()> {
     };
 
     let chars: Vec<char> = buffer.iter().map(|b| *b as char).collect();
-    let tokens = tokenizer(&chars).unwrap();
+    let tokens = tokenize(&chars).unwrap();
     println!("tokens:");
     for token in tokens.iter() {
         println!("{:?}", token);
     }
+
+    let mut token_parser =TokenParser::new();
+    let ast = match token_parser.parse(tokens) {
+        Ok(ast) => ast,
+        Err(err) => {
+            panic!(err)
+        },
+    };
+
+    println!("ast:\n{:?}", ast);
+
 
     Ok(())
 }

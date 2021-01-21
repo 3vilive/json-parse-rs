@@ -2,9 +2,6 @@
     "key": "value",
     "number": 1,
     "numbers": [
-        1, 2, 3, 4
-    ],
-    "boolean": true,
-    "allow": false,
-    "object": null
+        1, 2
+    ]
 }
